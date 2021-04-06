@@ -17,8 +17,8 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
-  const productsCollection = client.db(`${process.env.DB_NAME}`).collection("products");
-  const ordersCollection = client.db(`${process.env.DB_NAME}`).collection("orders");
+  const productsCollection = client.db("emaJohnStore").collection("products");
+  const ordersCollection = client.db("emaJohnStore").collection("orders");
   console.log('databasae connected successfully');
 
   //post or send data to databasae
@@ -83,6 +83,4 @@ app.get('/', (req, res) => {
   res.send('Hello ema watson!!')
 })
 
-app.listen(process.env.PORT || port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+app.listen(process.env.PORT || port)
